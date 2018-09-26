@@ -23,7 +23,8 @@ matplotlib==2.0.2
 Setting up the training data which will be presented to the algorithm:
 
 ```
-train_data = np.array([[0,0,1],[0,1,0],[1,0,0],[1,1,1],[0,0,0],[1,1,0],[1,0,1],[0,0,1],[0,0,0.8],[0,0,0.91],[0,0,0.95],[0,0,0.949]]) 
+train_data = np.array([[0,0,1],[0,1,0],[1,0,0],[1,1,1],[0,0,0],[1,1,0],
+[1,0,1],[0,0,1],[0,0,0.8],[0,0,0.91],[0,0,0.95],[0,0,0.949]]) 
 ```
 Instantiating the SOM class:
 
@@ -34,7 +35,8 @@ som_maker = SOM()
 Training the algorithm on the data:
 
 ```
-som = SOM.generate_SOM(som_maker,x_size=50,y_size=75,your_data=train_data,initial_radius=100,number_of_iterations=100,initial_learning_rate=0.1)       
+som = SOM.generate_SOM(som_maker,x_size=50,y_size=75,your_data=train_data,
+initial_radius=100,number_of_iterations=100,initial_learning_rate=0.1)       
 ```
 
 Evaluate data on the trained SOM:
