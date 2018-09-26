@@ -4,11 +4,7 @@ Self organising maps are dimensionality reduction tools primarily used for visua
 
 ## Getting Started
 
-To use the SOM tool you can either clone the repository and import the class or install the package using the following command line: 
-
-```
-pip install Kohonen_self_organising_map 
-```
+To use the SOM tool you can clone the repository and import the class using a suitable Python IDE.
 
 ## Prerequisites:
 
@@ -48,6 +44,10 @@ View the evaluated data:
 plt.figure()
 plt.plot(tested_data,'k*')
 ```
+
+Here is an examplar pre-trained SOM with evaluated datapoints:
+
+![Trained SOM](https://github.com/SpaceMeerkat/Bespin/blob/master/Example_Images/Trained_SOM.png)
 
 
 
