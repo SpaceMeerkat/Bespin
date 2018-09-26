@@ -1,7 +1,4 @@
-# Bespin
-Kohonen Self-Organising Map 
-
-### Kohonen Self-Organising Map
+# Kohonen Self-Organising Map
 
 Self organising maps are dimensionality reduction tools primarily used for visualising data and spotting clustering patterns based on their intrinsic features. Most clustering algorithms rely on the user to specify the number of hierarchical clusters with which to organis the data, however the **Kohonen Self-Organising Map** (SOM) only requires paramater tuning based on training speed and intensity.
 
@@ -13,7 +10,7 @@ To use the SOM tool you can either clone the repository and import the class or 
 pip install Kohonen_self_organising_map 
 ```
 
-# Prerequisites:
+## Prerequisites:
 
 * numpy==1.14.0
 * matplotlib==2.0.2
