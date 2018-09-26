@@ -15,8 +15,8 @@ pip install Kohonen_self_organising_map
 
 # Prerequisites:
 
-*numpy==1.14.0
-*matplotlib==2.0.2
+* numpy==1.14.0
+* matplotlib==2.0.2
 
 ## Example code
 
