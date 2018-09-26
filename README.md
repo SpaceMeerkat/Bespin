@@ -49,6 +49,9 @@ plt.figure()
 plt.plot(tested_data,'k*')
 ```
 
+Here is an examplar pre-trained SOM with evaluated datapoints:
+
+[Trained SOM](https://github.com/SpaceMeerkat/Bespin/blob/master/Example_Images/Trained_SOM.png)
 
 
 
