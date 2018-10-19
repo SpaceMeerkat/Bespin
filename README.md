@@ -51,9 +51,9 @@ Here is an examplar pre-trained SOM with evaluated datapoints:
 
 ## Things the SOM tool can't do (yet):
 
-*Impute missing data
-*Operate with batch inputs
-*Output a map of any user-specified-size of <3 dimensions (currently SOM only outputs a 2D map)
+* Impute missing data
+* Operate with batch inputs
+* Output a map of any user-specified-size of <3 dimensions (currently SOM only outputs a 2D map)
 
 
 
