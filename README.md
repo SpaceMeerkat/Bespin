@@ -53,8 +53,8 @@ Here is an examplar pre-trained SOM with evaluated datapoints:
 
 * Impute missing data
 * Operate with batch inputs
-* Output a map of any user-specified-size of <3 dimensions (currently SOM only outputs a 2D map)
-* Training epoch animations
+* Output a map of any user-specified-size of less than 3 dimensions (currently SOM only outputs a 2D map)
+* Producing training epoch animations
 
 
 
