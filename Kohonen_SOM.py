@@ -13,27 +13,25 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 plt.close('all')
 
-"""
-The SOM class takes input data of particular shape:
-        [N,F]
-Where N denotes the number of data objects you have and F denotes the number of features per object.
-Please note that F should remain constant throughout all data objects but can take any finite size.
-
-Running the algorithm in it's simplest form will look as follows:
-SOM.generate_SOM(som_maker,x_size=50,y_size=75,your_data=train_data,initial_radius=100,number_of_iterations=100,initial_learning_rate=0.1)
-
-Where each variable has the following property:
-        x_size: length of SOM x dimension 
-        y_size: length of SOM y dimension 
-        your_data: training data which you present to the algorithm with shape [N,F]
-        initial_radius: radius of node infulence at epoch 1 of the training phase
-        number_of_iterations: number of epochs during the training phase
-        initial_learning_rate: hyperparameter for tuning the intensity of node alteration during training
-"""
-
-
-
 class SOM:
+        
+        """
+        The SOM class takes input data of particular shape:
+                [N,F]
+        Where N denotes the number of data objects you have and F denotes the number of features per object.
+        Please note that F should remain constant throughout all data objects but can take any finite size.
+        
+        Running the algorithm in it's simplest form will look as follows:
+        SOM.generate_SOM(som_maker,x_size=50,y_size=75,your_data=train_data,initial_radius=100,number_of_iterations=100,initial_learning_rate=0.1)
+        
+        Where each variable has the following property:
+                x_size: length of SOM x dimension 
+                y_size: length of SOM y dimension 
+                your_data: training data which you present to the algorithm with shape [N,F]
+                initial_radius: radius of node infulence at epoch 1 of the training phase
+                number_of_iterations: number of epochs during the training phase
+                initial_learning_rate: hyperparameter for tuning the intensity of node alteration during training
+        """
 
         def Kohonen_Layer(self,x_size,y_size,your_data):
                 k_layer = np.random.uniform(your_data.min(),your_data.max(),(x_size,y_size,your_data.shape[-1]))
@@ -75,9 +73,10 @@ class SOM:
                 bmu_list = []
                 cols_list = []
                 rows_list = []
-                for i in tqdm(range(int(number_of_iterations))):
+                for i in range(int(number_of_iterations)):
+                        print('ITERATION ',str(i), ' OF ', str(number_of_iterations))
                         random.shuffle(data_length)
-                        for j in range(len(data_length)):
+                        for j in tqdm(range(len(data_length))):
                                 data_array = your_data[data_length[j]]
                                 lambda_value = self.lambda_function(initial_radius,number_of_iterations)
                                 radius = self.radial_decay_function(i,lambda_value,initial_radius)                
@@ -108,11 +107,3 @@ class SOM:
                         cols.append(bmu[0])
                         rows.append(bmu[1])
                 return np.vstack([np.hstack(np.array(cols)), np.hstack(np.array(rows))])
-                
-
-
-plt.figure()
-
-for i in tqdm(range(initial_data.shape[0])):
-        for  j in range(initial_data.shape[1]):
-                plt.plot(j,i,'s',color=initial_data[j,i],markersize=10.0,zorder=0)
