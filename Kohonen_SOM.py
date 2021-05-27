@@ -73,10 +73,9 @@ class SOM:
                 bmu_list = []
                 cols_list = []
                 rows_list = []
-                for i in range(int(number_of_iterations)):
-                        print('ITERATION ',str(i), ' OF ', str(number_of_iterations))
+                for i in tqdm(range(int(number_of_iterations))):
                         random.shuffle(data_length)
-                        for j in tqdm(range(len(data_length))):
+                        for j in range(len(data_length)):
                                 data_array = your_data[data_length[j]]
                                 lambda_value = self.lambda_function(initial_radius,number_of_iterations)
                                 radius = self.radial_decay_function(i,lambda_value,initial_radius)                
