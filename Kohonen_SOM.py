@@ -117,7 +117,7 @@ class SOM(object):
         tested_data =  np.vstack([np.hstack(np.array(cols)), np.hstack(np.array(rows))])
         
         clear_output()
-        plt.figure(figsize=(3,3))
+        plt.figure()
         for i in range(k_layer.shape[1]):
                 for  j in range(k_layer.shape[0]):
                         plt.plot(j,i,'s',color=k_layer[j,i],markersize=15.0,zorder=0)
