@@ -27,15 +27,15 @@ class SOM(object):
         self.initial_radius = widgets.IntSlider(min=0, 
                                                 max=max(self.x_size,self.y_size), 
                                                 value=max(self.x_size,self.y_size), 
-                                                description=r'$\sigma$(t)')
+                                                description=r'$\sigma(t_{0})$:')
         self.initial_learning_rate = widgets.FloatSlider(min=0.0, 
                                                          max=1.0, 
                                                          value=0.1, 
-                                                         description=r'a(t$_{0}$):')
+                                                         description=r'$a(t_{0})$:')
         self.iterations = widgets.IntSlider(min=0, 
                                             max=200, 
                                             value=100, 
-                                            description='n:')
+                                            description='$N$:')
         self.train_button = widgets.Button(
             description='Make map',
             disabled=False,
@@ -117,11 +117,13 @@ class SOM(object):
         tested_data =  np.vstack([np.hstack(np.array(cols)), np.hstack(np.array(rows))])
         
         clear_output()
-        plt.figure()
+        plt.figure(figsize=(5,5))
         for i in range(k_layer.shape[1]):
                 for  j in range(k_layer.shape[0]):
                         plt.plot(j,i,'s',color=k_layer[j,i],markersize=15.0,zorder=0)
-        plt.plot(tested_data[0],tested_data[1],'k*',zorder=1)
+        plt.plot(tested_data[0],tested_data[1],'r*',zorder=1)
+        plt.axis('off')
+        plt.xlim(-0.5,self.x_size-0.5); plt.ylim(-0.5,self.y_size-0.5)
 
     def _on_front_click(self, change):
         self.out.clear_output()
