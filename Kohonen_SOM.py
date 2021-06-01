@@ -32,7 +32,7 @@ class SOM(object):
     """
 
     def __init__(self, x_size, y_size, data):
-        '''
+        """
         Instantiates the SOM with x and y dimensional sizes and training data.
         
         :param x_size:  
@@ -42,20 +42,20 @@ class SOM(object):
         :param data:  
             (array) N-dimensional vectors for training the map 
 
-        '''
+        """
         
         self.x_size = x_size
         self.y_size = y_size
         self.data = data
 
     def _create_front_widgets(self):
-        '''
+        """
         Creates the front end UI widgets landing.
 
         :return: 
             (class attributes) UI landing widgets
 
-        '''
+        """
         
         self.initial_radius = widgets.IntSlider(min=0, 
                                                 max=max(self.x_size,self.y_size), 
@@ -78,13 +78,13 @@ class SOM(object):
         self.train_button.on_click(self._on_front_click)
         
     def _create_end_widgets(self):
-        '''
+        """
         Creates the UI widgets landing having trained a map.
 
         :return: 
             (class attributes) UI landing widgets
 
-        '''
+        """
         
         self.plot_button = widgets.Button(
             description='Show map',
@@ -95,7 +95,7 @@ class SOM(object):
         self.plot_button.on_click(self._on_end_click)
         
     def Kohonen_Layer(self,x_size,y_size,data):
-        '''
+        """
         Instantiates a 2-dimensional map with uniformly sampled vectors in the
         interval [-1,1].
         
@@ -109,13 +109,13 @@ class SOM(object):
         :return: 
             (array) 2-dimensional kohonen layer
 
-        '''
+        """
         
         k_layer = np.random.uniform(data.min(),data.max(),(x_size,y_size,data.shape[-1]))
         return k_layer
         
     def BMU_node(self,k_layer,data):
-        '''
+        """
         Calculates the xy positional indices of an input vectors Best Matching
         Unit (BMU).
         
@@ -127,7 +127,7 @@ class SOM(object):
         :return: 
             (list) list of length=2, giving the x and y positions of the BMU
 
-        '''
+        """
         
         flat_w = np.vstack(np.copy(k_layer))
         BMU_val = np.linalg.norm(data-flat_w,axis=1).argmin()
@@ -135,7 +135,7 @@ class SOM(object):
         return BMU
     
     def lambda_function(self,initial_radius,number_of_iterations):
-        '''
+        """
         Calculates lambda, for use in the radial and learning rate decays as a
         function of the timestep.
         
@@ -148,12 +148,12 @@ class SOM(object):
         :return: 
             (float) lambda, the time-dependent scaling factor for weight decay
 
-        '''
+        """
         
         return number_of_iterations/np.log(initial_radius)
             
     def radial_decay_function(self,time_step,lambda_value,initial_radius):
-        '''
+        """
         Decays the size of the zone of influence around the BMU given a 
         timestep. 
         
@@ -168,12 +168,12 @@ class SOM(object):
         :return: 
             (float) radial distance about the BMU for weight updates
 
-        '''
+        """
         
         return initial_radius*np.exp(-time_step/lambda_value)
     
     def learning_rate(self,initial_learning_rate,time_step,lambda_value):
-        '''
+        """
         Decays the *learning rate*, a hyperparameter for decaying the weight
         update influence on BMU neighbouring nodes with time.
         
@@ -188,12 +188,12 @@ class SOM(object):
         :return: 
             (float) learning rate at current timestep
 
-        '''
+        """
         
         return initial_learning_rate*np.exp(-time_step/lambda_value)
     
     def node_influence(self,node_distances,radius):
-        '''
+        """
         Calculates the influence of nodes, given their proximity to the BMU, as
         weights.
         
@@ -206,12 +206,12 @@ class SOM(object):
         :return: 
             (array) neighbourhood influence weights
 
-        '''
+        """
         
         return np.exp((-(node_distances**2))/(2*(radius**2)))
     
     def weight_update(self,k_layer,theta,learning_rate,data,weights,weight_rows,weight_cols):
-        '''
+        """
         Updates the weights neighbouring the BMU, given input vectors.
         
         :param k_layer:  
@@ -234,13 +234,13 @@ class SOM(object):
         :return: 
             (array) 2-dimensional kohonen layer
 
-        '''
+        """
         
         k_layer[weight_rows,weight_cols] += (theta*learning_rate*(data-weights).T).T
         return k_layer
            
     def generate_SOM(self,initial_radius,number_of_iterations,initial_learning_rate): 
-        '''
+        """
         A forward process which loops over training data and a specified number
         of timesteps, updating weights and training the map.
         
@@ -256,7 +256,7 @@ class SOM(object):
         :return: 
             (array) 2-dimensional kohonen layer
 
-        '''
+        """
         
         k_layer = self.Kohonen_Layer(self.x_size,self.y_size,self.data)
         data_length = np.arange(0,self.data.shape[0]-1,1)
@@ -292,7 +292,7 @@ class SOM(object):
         return k_layer
         
     def evaluate_map(self, test_data, k_layer):
-        '''
+        """
         Given a trained map, finds the BMUs for input data and plots them on
         the trained map.
         
@@ -304,7 +304,7 @@ class SOM(object):
         :return: 
             None
 
-        '''
+        """
         
         cols = []
         rows = []
@@ -325,13 +325,13 @@ class SOM(object):
         return 
 
     def _on_front_click(self, change):
-        '''
+        """
         Controls the map generation through landing widget button clicks.
 
         :return: 
             (class attributes) UI post-training landing widgets
 
-        '''
+        """
         
         self.out.clear_output()
         with self.out:
@@ -342,13 +342,13 @@ class SOM(object):
         return
     
     def _on_end_click(self, change):
-        '''
+        """
         Controls the map evaluation through landing widget button clicks.
 
         :return: 
             None
 
-        '''
+        """
         
         self.out.clear_output()
         with self.out:
@@ -357,13 +357,13 @@ class SOM(object):
             return
 
     def front_display(self):
-        '''
+        """
         Structures the UI landing widgets prior to map training.
 
         :return: 
             (ipywidgets object) Pre-training landing UI
 
-        '''
+        """
         
         self._create_front_widgets()
         self.out = widgets.Output() 
@@ -377,13 +377,13 @@ class SOM(object):
         return
         
     def end_display(self):
-        '''
+        """
         Structures the UI landing widgets post map training.
 
         :return: 
             (ipywidgets object) Post-training landing UI
 
-        '''
+        """
         
         self._create_end_widgets()
         self.out = widgets.Output() 
