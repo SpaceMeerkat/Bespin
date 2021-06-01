@@ -75,8 +75,8 @@ class SOM(object):
     def node_influence(self,node_distances,radius):
             return np.exp((-(node_distances**2))/(2*(radius**2)))
     
-    def weight_update(self,k_layer,theta,L,data,weights,weight_rows,weight_cols):
-            k_layer[weight_rows,weight_cols] += (theta*L*(data-weights).T).T
+    def weight_update(self,k_layer,theta,learning_rate,data,weights,weight_rows,weight_cols):
+            k_layer[weight_rows,weight_cols] += (theta*learning_rate*(data-weights).T).T
             return k_layer
            
     def generate_SOM(self,initial_radius,number_of_iterations,initial_learning_rate): 
