@@ -64,7 +64,7 @@ class SOM(object):
         self.initial_learning_rate = widgets.FloatSlider(min=0.0, 
                                                          max=1.0, 
                                                          value=0.1, 
-                                                         description=r'$a(t_{0})$:')
+                                                         description=r'$\alpha(t_{0})$:')
         self.iterations = widgets.IntSlider(min=0, 
                                             max=200, 
                                             value=100, 
