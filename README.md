@@ -10,7 +10,7 @@ To use the SOM tool you can clone the repository and import the class using a su
 
 Here is an examplar pre-trained SOM with evaluated datapoints:
 
-![Trained SOM](https://github.com/SpaceMeerkat/Bespin/blob/master/Example_Images/Trained_SOM.png)
+![Trained SOM](https://github.com/SpaceMeerkat/Bespin/blob/master/Kohonen_SOM/Example_Images/Trained_SOM.png)
 
 
 
