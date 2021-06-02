@@ -1,4 +1,4 @@
-<img src="Images/logo2.png" />
+<img src="Kohonen_SOM/Images/logo2.png" />
 
 # Kohonen Self-Organising Map
 
