@@ -2,7 +2,7 @@
 
 # Kohonen Self-Organising Map
 
-Self organising maps are dimensionality reduction tools primarily used for visualising data and spotting clustering patterns based on their intrinsic features. Most clustering algorithms rely on the user to specify the number of hierarchical clusters with which to organis the data, however the **Kohonen Self-Organising Map** (SOM) only requires paramater tuning based on training speed and intensity.
+Self organising maps are dimensionality reduction tools primarily used for visualising data and spotting clustering patterns based on their intrinsic features. Most clustering algorithms rely on the user to specify the number of hierarchical clusters with which to organise the data, however the **Kohonen Self-Organising Map** (SOM) only requires paramater tuning based on training speed and intensity.
 
 ## Getting Started
 
